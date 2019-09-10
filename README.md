@@ -1,23 +1,41 @@
 
-# react-native-modbus
+# Android和硬件通信使用的Modbus库 react-native-modbus
+## 原生库 使用的是 志勇大神封装的Modbus库 [项目地址]:[https://github.com/licheedev/Modbus4Android]
 
-## Getting started
+## 开始使用
 
 `$ npm install react-native-modbus --save`
 
-### Mostly automatic installation
+### 自动链接原生库
 
 `$ react-native link react-native-modbus`
 
-### Manual installation
+1. 在Android 目录下 的`build.gradle`文件里面的 `repositories`
+   增加 `maven { url 'https://jitpack.io' }` 如下
+
+   ```
+    allprojects {
+    repositories {
+        mavenLocal()
+        google()
+        jcenter()
+        maven {
+            // All of React Native (JS, Obj-C sources, Android binaries) is installed from npm
+            url "$rootDir/../node_modules/react-native/android"
+            }
+      maven { url 'https://jitpack.io' }
+      }
+	}
+   ```
+
+  2. 在AndraidMainifest.xml 文件中 将  ` android:allowBackup="false"` 改成`android:allowBackup="true"`
+
+  3. 注意这个库支持的`miniSDK` 是18
 
 
-#### iOS
+### 手动安装
 
-1. In XCode, in the project navigator, right click `Libraries` ➜ `Add Files to [your project's name]`
-2. Go to `node_modules` ➜ `react-native-modbus` and add `RNModbus.xcodeproj`
-3. In XCode, in the project navigator, select your project. Add `libRNModbus.a` to your project's `Build Phases` ➜ `Link Binary With Libraries`
-4. Run your project (`Cmd+R`)<
+
 
 #### Android
 
@@ -34,20 +52,49 @@
       compile project(':react-native-modbus')
   	```
 
-#### Windows
-[Read it! :D](https://github.com/ReactWindows/react-native)
-
-1. In Visual Studio add the `RNModbus.sln` in `node_modules/react-native-modbus/windows/RNModbus.sln` folder to their solution, reference from their app.
-2. Open up your `MainPage.cs` app
-  - Add `using Modbus.RNModbus;` to the usings at the top of the file
-  - Add `new RNModbusPackage()` to the `List<IReactPackage>` returned by the `Packages` method
 
 
-## Usage
+
+## 使用方法如下 或者参考example里面的`app.js`文件
 ```javascript
 import RNModbus from 'react-native-modbus';
 
 // TODO: What to do with the module?
 RNModbus;
+
+
+/**
+ * 打开串口
+ * @param {*串口路径} path 
+ * @param {*波特率} baudrate 
+ * @param {* 成功或者失败回调} Callback 
+ */
+function openDevice(path, baudrate, Callback) {
+    RNModbus.openDevice(path, baudrate, Callback)
+}
+
+/**
+ * 写寄存器
+ * @param {*从机地址} slaveId 
+ * @param {*写入的地址} start 
+ * @param {*写入的值} values 
+ * @param {*写入成功或者失败回调} Callback 
+ */
+function writeRegisters(slaveId, start, values, Callback) {
+    RNModbus.writeRegisters(slaveId, start, values, Callback)
+}
+
+/**
+ * 读寄存器数据
+ * @param {*从机地址} slaveId 
+ * @param {*读取的寄存器地址} start 
+ * @param {*读取的长度} len 
+ * @param {*读取的回调} Callback 
+ */
+function readHoldingRegisters(slaveId, start, len, Callback) {
+    RNModbus.readHoldingRegisters(slaveId, start, len, Callback)
+}
+
+
 ```
   
