@@ -1,20 +1,27 @@
-
 {
   "name": "react-native-modbus",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
-    "react-native"
+    "react-native",
+    "modbus"
   ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Marcello168/react-native-modbus"
+  },
+  "bugs": {
+    "url": "https://github.com/Marcello168/react-native-modbus/issues"
+  },
+  "homepage": "https://github.com/Marcello168/react-native-modbus#readme",
   "author": "",
   "license": "",
   "peerDependencies": {
     "react-native": "^0.41.2",
     "react-native-windows": "0.41.0-rc.1"
-
   }
 }
