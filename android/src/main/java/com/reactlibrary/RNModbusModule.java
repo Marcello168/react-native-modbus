@@ -127,7 +127,7 @@ public class RNModbusModule extends ReactContextBaseJavaModule {
     short[] cmd = new short[length];
     for (int i = 0; i < length; i++) {
       int number =  values.getInt(i);
-      cmd[i] =(byte)number ;
+      cmd[i] =(short)number ;
     }
     ModbusManager.get()
             .writeRegisters(slaveId, start, cmd,
