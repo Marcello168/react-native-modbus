@@ -85,6 +85,17 @@ function writeRegisters(slaveId, start, values, Callback) {
 }
 
 /**
+ * 写单个寄存器
+ * @param {* 从机地址} slaveId 
+ * @param {* 寄存器地址} start 
+ * @param {* 写入的值} value 
+ * @param {* 回调} Callback 
+ */
+function writeSingleRegister(slaveId, start, value, Callback) {
+    RNModbus.writeRegisters(slaveId, start, value, Callback);
+}
+
+/**
  * 读寄存器数据
  * @param {*从机地址} slaveId 
  * @param {*读取的寄存器地址} start 

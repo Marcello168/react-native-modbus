@@ -157,4 +157,41 @@ public class RNModbusModule extends ReactContextBaseJavaModule {
                       }
                     });
   }
+
+
+  // 写单个寄存器
+  @ReactMethod
+  public  void writeSingleRegister(final int slaveId, final int start, final int value, final Callback callback){
+
+    ModbusManager.get()
+            .writeSingleRegister(slaveId, start, value,
+                    new ModbusCallback<WriteRegistersResponse>() {
+                      @Override
+                      public void onSuccess(WriteRegistersResponse writeRegistersResponse) {
+                        // 发送成功
+                        if (callback != null){
+                          callback.invoke(1);
+                        }
+                      }
+
+                      @Override
+                      public void onFailure(Throwable tr) {
+                        Log.d("BBC", "BAAAABC: ");
+
+                        if (callback != null){
+                          callback.invoke(0);
+                        }
+                      }
+
+                      @Override
+                      public void onFinally() {
+                        if (callback != null){
+                          callback.invoke(0);
+                        }
+                      }
+                    });
+  }
+
+
+
 }
