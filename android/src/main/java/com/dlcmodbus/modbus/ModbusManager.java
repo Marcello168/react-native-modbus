@@ -1,4 +1,4 @@
-package com.reactlibrary.modbus;
+package com.dlcmodbus.modbus;
 
 import com.licheedev.modbus4android.ModbusCallback;
 import com.licheedev.modbus4android.ModbusWorker;

@@ -1,4 +1,4 @@
-package com.reactlibrary.modbus4android;
+package com.dlcmodbus.modbus4android;
 
 import com.serotonin.modbus4j.exception.ModbusInitException;
 import com.serotonin.modbus4j.exception.ModbusTransportException;

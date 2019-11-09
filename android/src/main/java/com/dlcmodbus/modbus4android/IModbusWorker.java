@@ -1,4 +1,4 @@
-package com.reactlibrary.modbus4android;
+package com.dlcmodbus.modbus4android;
 
 import android.os.Handler;
 

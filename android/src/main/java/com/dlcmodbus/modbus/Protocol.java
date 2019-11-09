@@ -1,4 +1,4 @@
-package com.reactlibrary.modbus;
+package com.dlcmodbus.modbus;
 
 public interface Protocol {
 

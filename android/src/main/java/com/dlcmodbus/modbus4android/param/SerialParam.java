@@ -1,4 +1,4 @@
-package com.reactlibrary.modbus4android.param;
+package com.dlcmodbus.modbus4android.param;
 
 import com.licheedev.modbus4android.AndroidSerialPortWrapper;
 import com.licheedev.modbus4android.ModbusParam;

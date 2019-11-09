@@ -1,5 +1,5 @@
 
-package com.reactlibrary;
+package com.dlcmodbus;
 
 import android.util.Log;
 
@@ -18,6 +18,7 @@ import com.reactlibrary.modbus.ModbusManager;
 import com.serotonin.modbus4j.ModbusMaster;
 import com.serotonin.modbus4j.msg.ReadHoldingRegistersResponse;
 import com.serotonin.modbus4j.msg.WriteRegistersResponse;
+import com.serotonin.modbus4j.msg.WriteRegisterResponse;
 
 import static android.content.ContentValues.TAG;
 
@@ -165,9 +166,9 @@ public class RNModbusModule extends ReactContextBaseJavaModule {
 
     ModbusManager.get()
             .writeSingleRegister(slaveId, start, value,
-                    new ModbusCallback<WriteRegistersResponse>() {
+                    new ModbusCallback<WriteRegisterResponse>() {
                       @Override
-                      public void onSuccess(WriteRegistersResponse writeRegistersResponse) {
+                      public void onSuccess(WriteRegisterResponse writeRegistersResponse) {
                         // 发送成功
                         if (callback != null){
                           callback.invoke(1);
