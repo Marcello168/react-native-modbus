@@ -103,7 +103,7 @@ public class RNModbusModule extends ReactContextBaseJavaModule {
 //                          promise.resolve(receiveArray);
                           WritableMap map = Arguments.createMap();
                           map.putDouble("code", 1);
-                          map.putArray("data",receiveArray)
+                          map.putArray("data",receiveArray);
                           promise.resolve(map);
                       }
 
@@ -114,7 +114,7 @@ public class RNModbusModule extends ReactContextBaseJavaModule {
 //                          promise.resolve(receiveArray);
                           WritableMap map = Arguments.createMap();
                           map.putDouble("code", 0);
-                          map.putArray("data",receiveArray)
+                          map.putArray("data",receiveArray);
                           promise.resolve(map);
 
                       }
@@ -141,9 +141,11 @@ public class RNModbusModule extends ReactContextBaseJavaModule {
                       @Override
                       public void onSuccess(WriteRegistersResponse writeRegistersResponse) {
                         // 发送成功
+                          WritableArray receiveArray = Arguments.createArray();
+
                           WritableMap map = Arguments.createMap();
                           map.putDouble("code", 1);
-                          map.putArray("data",receiveArray)
+                          map.putArray("data",receiveArray);
                           promise.resolve(map);
 
                       }
@@ -151,9 +153,11 @@ public class RNModbusModule extends ReactContextBaseJavaModule {
                       @Override
                       public void onFailure(Throwable tr) {
                         Log.d("BBC", "BAAAABC: ");
+                          WritableArray receiveArray = Arguments.createArray();
+
                           WritableMap map = Arguments.createMap();
                           map.putDouble("code", 0);
-                          map.putArray("data",receiveArray)
+                          map.putArray("data",receiveArray);
                           promise.resolve(map);
                       }
 
@@ -176,9 +180,11 @@ public class RNModbusModule extends ReactContextBaseJavaModule {
                       public void onSuccess(WriteRegisterResponse writeRegistersResponse) {
                         // 发送成功
 //                          promise.resolve(1);
+                          WritableArray receiveArray = Arguments.createArray();
+
                           WritableMap map = Arguments.createMap();
                           map.putDouble("code", 1);
-                          map.putArray("data",receiveArray)
+                          map.putArray("data",receiveArray);
                           promise.resolve(map);
 
                       }
@@ -186,10 +192,11 @@ public class RNModbusModule extends ReactContextBaseJavaModule {
                       @Override
                       public void onFailure(Throwable tr) {
                         Log.d("BBC", "BAAAABC: ");
+                          WritableArray receiveArray = Arguments.createArray();
 
                           WritableMap map = Arguments.createMap();
                           map.putDouble("code", 0);
-                          map.putArray("data",receiveArray)
+                          map.putArray("data",receiveArray);
                           promise.resolve(map);
 
                       }
