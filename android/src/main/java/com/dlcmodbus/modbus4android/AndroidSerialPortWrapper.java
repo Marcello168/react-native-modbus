@@ -12,16 +12,23 @@ import java.io.OutputStream;
  * modbus的Android串口实现
  */
 public class AndroidSerialPortWrapper implements SerialPortWrapper {
-
     private final String mDevice;
     private final int mBaudRate;
+    private final int mDataBits;
+    private final int mParity;
+    private final int mStopBits;
+
     private BufferedInputStream mInputStream;
     private BufferedOutputStream mOutputStream;
     private SerialPort mSerialPort;
 
-    public AndroidSerialPortWrapper(String device, int baudRate) {
+    public AndroidSerialPortWrapper(String device, int baudRate, int dataBits, int parity,
+                                    int stopBits) {
         mDevice = device;
         mBaudRate = baudRate;
+        mDataBits = dataBits;
+        mParity = parity;
+        mStopBits = stopBits;
     }
 
     @Override
@@ -60,7 +67,13 @@ public class AndroidSerialPortWrapper implements SerialPortWrapper {
     @Override
     public void open() throws Exception {
 
-        mSerialPort = new SerialPort(mDevice, mBaudRate);
+        mSerialPort = SerialPort //
+                .newBuilder(mDevice, mBaudRate)
+                .parity(mParity)
+                .dataBits(mDataBits)
+                .stopBits(mStopBits)
+                .build();
+
         mInputStream = new BufferedInputStream(mSerialPort.getInputStream());
         mOutputStream = new BufferedOutputStream(mSerialPort.getOutputStream());
     }
@@ -81,27 +94,17 @@ public class AndroidSerialPortWrapper implements SerialPortWrapper {
     }
 
     @Override
-    public int getFlowControlIn() {
-        return 0;
-    }
-
-    @Override
-    public int getFlowControlOut() {
-        return 0;
-    }
-
-    @Override
     public int getDataBits() {
-        return 8; // 数据位 8
+        return mDataBits;
     }
 
     @Override
     public int getStopBits() {
-        return 1; // 停止位 1
+        return mStopBits;
     }
 
     @Override
     public int getParity() {
-        return 0;
+        return mParity;
     }
 }
