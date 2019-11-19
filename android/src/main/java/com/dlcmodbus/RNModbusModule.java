@@ -44,9 +44,12 @@ public class RNModbusModule extends ReactContextBaseJavaModule {
    * rn调用Native,并获取返回值
    * @param path 串口路径
    * @param baudrate 波特率
+   * @param dataBits 数据位
+   * @param parity 校验位
+   * @param stopBits 停止位
    */
   @ReactMethod
-  public void openDevice(String path, int baudrate, final Promise promise) {
+  public void openDevice(String path, int baudrate, int dataBits, int parity,int stopBits,final Promise promise) {
     if (ModbusManager.get().isModbusOpened()) {
       // 关闭设备
       ModbusManager.get().closeModbusMaster();
@@ -55,7 +58,10 @@ public class RNModbusModule extends ReactContextBaseJavaModule {
 
     // 串口
     ModbusParam serialParam =
-            SerialParam.create(path, baudrate).setTimeout(1000).setRetries(0); // 不重试
+            SerialParam.create(path, baudrate).setDataBits(dataBits) // 数据位
+                    .setParity(parity) // 校验位
+                    .setStopBits(stopBits) // 停止位
+                    .setTimeout(1000).setRetries(0); // 不重试 // 不重试
     ModbusManager.get().closeModbusMaster();
     ModbusManager.get().init(serialParam, new ModbusCallback<ModbusMaster>() {
       @Override

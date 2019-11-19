@@ -35,6 +35,7 @@ android {
 repositories {
     mavenCentral()
     maven { url 'https://jitpack.io' }
+    google()
 
 
 }
@@ -47,8 +48,10 @@ dependencies {
     api 'com.trello.rxlifecycle2:rxlifecycle-android:2.2.2'
     // 串口
     api 'com.github.licheedev.Android-SerialPort-API:serialport:1.0.1'
-    // modbus4j
-    api 'com.github.licheedev:modbus4j:v3.0.5-alpha1'
+//    // modbus4j
+//    api 'com.github.licheedev:modbus4j:v3.0.5-alpha1'
+    api 'com.github.licheedev:Modbus4Android:2.0.0'
+
 
 }
 apply from: './jitpack.gradle'
